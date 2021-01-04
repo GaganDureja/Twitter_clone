@@ -6,10 +6,18 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	mail = models.EmailField(max_length=254)
-	mobile = models.IntegerField()
-	dob = models.DateField()
+	user = models.OneToOneField(User, on_delete=models.CASCADE)	
+	mobile = models.CharField(max_length=12, blank=True)
+	
+	
 
-	def __str__(self):
-		return self.user
+	# def __str__(self):
+	# 	return self.user.username
+
+
+# def create_user_profile(sender, instance, created, **kwargs):
+# 	if created:
+# 		Profile.objects.create(user=instance)
+
+
+#post_save.connect(create_user_profile, sender=User)
